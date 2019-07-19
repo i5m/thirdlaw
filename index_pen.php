@@ -28,13 +28,13 @@
 </style>
 <body>
 
-    <nav class="navbar navbar-dark bg-dark sticky-top">
+    <nav class="navbar navbar-light bg-light sticky-top">
         <a class="navbar-brand" href="#">
             <img src="img/welcome/logominout.png" height="30" alt="">
         </a>
         <div align="right">
-        <a class="btn btn-outline-primary" href="login.php"><b>Log-in</b></a>
-        <a class="btn btn-primary" href="register.php">Register</a>
+            <a class="btn btn-outline-primary" href="login.php"><b>Log-in</b></a>
+            <a class="btn btn-primary" href="register.php">Register</a>
         </div>
     </nav><br/>
 
