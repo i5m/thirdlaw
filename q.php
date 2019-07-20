@@ -79,6 +79,17 @@ $navLeft = '<b style="font-size: 24px; vertical-align: middle;">Search</b>';
 
     <div class="container">
         <div id="phpSug"><?php plzSuggest(); ?></div>
+        <div align="center">
+            <i class="material-icons-outlined" style="font-size: 50px;">pool</i>
+            <h6> Hmm... Can't find anyone <br/> No worries... Add a custom one</h6>
+            <a class="btn btn-primary" href="customuser.php">Here</a>
+            <a class="btn btn-outline-dark" data-toggle="collapse" href="#nooneCollapse" role="button" aria-expanded="false" aria-controls="collapseExample">Know More</a>
+            <div class="collapse" id="nooneCollapse">
+                <div class="card card-body">
+                    <h6>If you can't find any person here add it to custom list...<br/>we'll notify you if any similar info account is created</h6>
+                </div>
+            </div>
+        </div>
         <div id="userslist"></div>
     </div><br><br><br>
 
@@ -114,7 +125,11 @@ $navLeft = '<b style="font-size: 24px; vertical-align: middle;">Search</b>';
                 $("#phpSug").hide();
                 $("#userslist").show();
                 $.post("search.php?action=getuser&q=" + q, function(responce) {
-                    $("#userslist").html(responce);
+                    if(responce === 'noone') {
+                        $("#userlist").html();
+                    } else {
+                        $("#userslist").html(responce);
+                    }
                 });
             }
             else {
