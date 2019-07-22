@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 20, 2019 at 03:25 PM
+-- Generation Time: Jul 22, 2019 at 04:52 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -117,7 +117,6 @@ CREATE TABLE `users` (
   `bday` varchar(20) DEFAULT NULL,
   `bio` varchar(130) DEFAULT NULL,
   `college` varchar(60) DEFAULT NULL,
-  `ecrushes` varchar(200) DEFAULT NULL,
   `last_active` varchar(50) DEFAULT 'Never',
   `instaprof` varchar(60) DEFAULT '',
   `latest_lat` varchar(20) DEFAULT '',
