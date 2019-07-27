@@ -109,7 +109,6 @@ SELECT SQL_CALC_FOUND_ROWS
     <script>
         $(document).ready(function() {
             $("#navMessage").addClass("activehai");
-            $("#navMessage img").attr("src", "img/nav/amessage.svg");
         });
     </script>
 

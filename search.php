@@ -8,8 +8,8 @@ if($_REQUEST["action"] == "getuser") {
     $q = $_REQUEST["q"];
     if(strlen($q) > 0) {
         if ((strlen($q) < 3) || (strlen($q) > 45)) {
-            echo "<br><p align='center'><i class='material-icons-outlined'>warning</i> Min 3 & Max 45 Characters <i class='material-icons-outlined'>warning</i></p>
-            <img src='img/searchTools/bg.png' style='max-width: 400px; width: 90%; height: auto; position: fixed; bottom: 0; left: 50%; transform: translate(-50%, -50%);'>";
+            echo "<br><p align='center'><i class='material-icons-outlined'>warning</i> Min 3 & Max 45 Characters <i class='material-icons-outlined'>warning</i></p><div id='nosugdiv'></div>";
+            echo "<script> if(window.location.pathname != '/'){ document.getElementById('nosugdiv').innerHTML = \"<img src='img/searchTools/bg.png' style='max-width: 400px; width: 90%; height: auto; position: fixed; bottom: 0; left: 50%; transform: translate(-50%, -50%);'>\"; } </script>";
         } 
         else {
             $sqlsearchExist = $link->prepare("SELECT username, whosearch, searchfreq FROM searches WHERE username='" . $u . "' AND whosearch=?");
@@ -41,7 +41,6 @@ if($_REQUEST["action"] == "getuser") {
             $sql->execute();
             $result = $sql->get_result();
 
-            echo '<div>';
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
                     echo '<a class="alert" style="margin: 5px; padding: 5px;" href="profile.php?id='.$row["id"].'">
@@ -54,10 +53,8 @@ if($_REQUEST["action"] == "getuser") {
                         </a>';
                 }
             } else {
-                echo "<h6 align='center'><i class='material-icons-outlined' style='font-size: 100px;'>pool</i> <br> Hmm... Can't find anyone</h6><div id='nosugdiv'></div>";
-                echo "<script> if(window.location.pathname != '/'){ document.getElementById('nosugdiv').innerHTML = \"<img src='img/searchTools/bg.png' style='max-width: 400px; width: 90%; height: auto; position: fixed; bottom: 0; left: 50%; transform: translate(-50%, -50%);'>\"; } </script>";
+                echo "noone";
             }
-            echo "</div>";
         }
     }
 }

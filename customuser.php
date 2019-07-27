@@ -3,7 +3,7 @@ session_start();
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) { header("location: /"); exit; }
 else { $u = $_SESSION["username"]; }
 require_once('header.php');
-$navLeft = '<b style="font-size: 24px; vertical-align: middle;">Custom</b>';
+$navLeft = '<button class="btn" onclick="history.go(-1)"><i class="material-icons-outlined" style="font-weight: bold; vertical-align: top; color: #007bff;">arrow_back</i></button> <b style="font-size: 24px; vertical-align: middle;">Custom</b>';
 ?>
 <?php
 $sqlWhom = "SELECT id, username FROM users WHERE username='$u'";
@@ -27,26 +27,41 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "File is not an image.";
             $uploadOk = 0;
         }
-        if ($_FILES["custompic"]["size"] > 500000) {
+        if ($_FILES["custompic"]["size"] > 700000) {
             echo "Sorry, the picture is too large.";
             $uploadOk = 0;
         }
-        if (
-            $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-            && $imageFileType != "gif"
-        ) {
-            echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+        if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
+            echo "Sorry, only JPG, JPEG, PNG files are allowed.";
             $uploadOk = 0;
+        }
+        if($imageFileType == "jpg" || $imageFileType == "jpeg") {
+            $src = imagecreatefromjpeg($_FILES["custompic"]["tmp_name"]);
+        }
+        else if($imageFileType == "png" || $imageFileType == "PNG") {
+            $src = imagecreatefrompng($_FILES["custompic"]["tmp_name"]);
         }
         if ($uploadOk == 0) {
             echo "Sorry, your file was not uploaded.";
         } else {
-            $newfilename = $target_dir . $u . "_custom_" . md5($target_file) . '.' . $imageFileType;
-            if (move_uploaded_file($_FILES["custompic"]["tmp_name"], $newfilename)) {
-                $a = 1;
-            } else {
-                $a = 0;
-                echo "Sorry, there was an error uploading your file." . "<br>";
+            $newfilename = $target_dir . $u . "_" . md5($target_file) . '.' . $imageFileType;
+
+            list($width_org, $height_org) = getimagesize($_FILES["custompic"]["tmp_name"]);
+    
+            $new_width = 200;
+            $new_height = ($height_org / $width_org) * $new_width;
+
+            $tmp_img_min = imagecreatetruecolor($new_width, $new_height);
+
+            imagecopyresampled($tmp_img_min, $src, 0, 0, 0, 0, $new_width, $new_height, $width_org, $height_org);
+
+            if($imageFileType == "jpg" || $imageFileType == "jpeg") {
+                if(imagejpeg($tmp_img_min, $newfilename, 80)) { $a = 1; }
+                else { echo "Sorry, there was an error uploading your file." . "<br>"; }
+            }
+            else if($imageFileType == "png" || $imageFileType == "PNG") {
+                if(imagepng($tmp_img_min, $newfilename, 8)){ $a = 1; }
+                else { echo "Sorry, there was an error uploading your file." . "<br>"; }
             }
         }
     } else { $a = 1; $newfilename = 'nocustompic'; }
@@ -67,7 +82,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if($_POST["customInsta"] !== "") { $param_custominsta = "https://instagram.com/".$_POST["customInsta"]; }
             else { $param_custominsta = ""; }
 
-            if (mysqli_stmt_execute($stmt)) { }
+            if (mysqli_stmt_execute($stmt)) {
+                echo '<div class="alert alert-success"><br/><h5>'.$param_customname.' succesfully added!!!<br/></h5></div>';
+            }
             else { echo "Error: " . $sql . "<br>" . $link->error; }
         }
     }
@@ -75,9 +92,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 ?>
-<style>
-    
-</style>
+<script>
+    if (window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.href);
+    }
+</script>
 </head>
 
 <body>
@@ -95,7 +114,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="form-group">
                 <span style="display:block">Upload a Picture<br/>(Perdicts faster & better)</span>
                 <label for="custompic" class="btn btn-outline-danger">Upload</label>
-                <img id="output" src="" style="display: none; max-width: 70vw; max-height: 70vh;"><br>
+                <img id="output" src="" width="100px"><br>
                 <input style="display: none;" type="file" onchange="loadFile(event)" name="custompic" id="custompic" accept="image/png, image/jpeg, image/gif">
                 <script>
                     var loadFile = function(event) {
@@ -108,11 +127,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <div class="form-group">
                 <label for="customName">Name:</label>
-                <input required type="text" class="form-control" id="customName" name="customName" placeholder="Enter name">
+                <input required type="text" maxlength="45" class="form-control" id="customName" name="customName" placeholder="Enter name">
             </div>
             <div class="form-group">
                 <label for="customCity">City:</label>
-                <input required type="text" class="form-control" id="customCity" name="customCity" placeholder="Which City">
+                <input required type="text" maxlength="45" class="form-control" id="customCity" name="customCity" placeholder="Which City">
             </div>
 
             <div>
@@ -123,11 +142,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div class="card-body">
                         <div class="form-group">
                             <label for="customCollege">School/College:</label>
-                            <input type="text" class="form-control" id="customCollege" name="customCollege" placeholder="Which School?">
+                            <input type="text" maxlength="45" class="form-control" id="customCollege" name="customCollege" placeholder="Which School?">
                         </div>
                         <div class="form-group">
                             <label for="customPhone">Phone:</label>
-                            <input type="text" class="form-control" id="customPhone" name="customPhone" placeholder="Contact Info">
+                            <input type="text" pattern="[0-9]{10}" class="form-control" id="customPhone" name="customPhone" placeholder="Contact Info">
                         </div>
                         <div class="form-group">
                             <label for="customBday">Birthday:</label>
@@ -135,7 +154,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         </div>
                         <div class="form-group">
                             <label for="customInsta">Instagram username</label>
-                            <input type="text" class="form-control" id="customInsta" name="customInsta" placeholder="Insta user...">
+                            <input type="text" maxlength="45" class="form-control" id="customInsta" name="customInsta" placeholder="Insta user...">
                         </div>
                     </div>
                 </div>
@@ -145,6 +164,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <small id="emailHelp" class="form-text text-muted">We'll never share this info with anyone else.</small>
             </div>
         </form>
-    </div>
+    </div><br/><br/><br/>
 
     <?php require_once('footer.php'); ?>

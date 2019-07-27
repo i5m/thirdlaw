@@ -63,7 +63,6 @@ $navLeft = '<b style="font-size: 22px;">'.$u.'</b>';
     <script>
         $(document).ready(function() {
             $("#navProfile").addClass("activehai");
-            $("#navProfile img").attr("src", "img/nav/aprofile.svg");
         });
     </script>
 
@@ -82,11 +81,11 @@ $navLeft = '<b style="font-size: 22px;">'.$u.'</b>';
                     ?>
                 </h5><br><br>
                 
-                <div class="details"><img src="img/profiledetails/ios/city.png" width="35" height="auto"> &nbsp; <?php if($row["city"] != "") { echo "Lives in <b>" . $row["city"] . "</b>"; } else { echo '<a class="btn btn-outline-dark someSpecific" href="editprofile.php">Add City <i class="material-icons-outlined">add</i></a>'; } ?> </div>
-                <div class="details"><img src="img/profiledetails/ios/phone.png" width="35" height="auto"> &nbsp; <?php if($row["phone"] != "") { echo "Contact <b>" . $row["phone"] . "</b>"; } else { echo '<a class="btn btn-outline-dark someSpecific" href="editprofile.php">Add Phone <i class="material-icons-outlined">add</i></a>'; } ?> </div>
-                <div class="details"><img src="img/profiledetails/ios/college.png" width="35" height="auto"> &nbsp; <?php if($row["college"] != "") { echo "Studies at <b>" . $row["college"] . "</b>"; } else { echo '<a class="btn btn-outline-dark someSpecific" href="editprofile.php">Add Education <i class="material-icons-outlined">add</i></a>'; } ?> </div>
-                <div class="details"><img src="img/profiledetails/ios/bday.png" width="35" height="auto"> &nbsp; <?php if($row["bday"] != "") { echo "Wish on <b>" . $row["bday"] . "</b>"; } else { echo '<a class="btn btn-outline-dark someSpecific" href="editprofile.php">Add B\'day <i class="material-icons-outlined">add</i></a>'; } ?> </div>
-                <div class="details"><img src="img/profiledetails/ios/joined.png" width="35" height="auto"> &nbsp; <?php if($row["created_at"] != "") { echo "Joined on <b>" . substr($row["created_at"],0,10) . "</b>"; } else { } ?> </div>
+                <div class="details"><img src="img/profiledetails/color/city.png" width="35" height="auto"> &nbsp; <?php if($row["city"] != "") { echo "Lives in <b>" . $row["city"] . "</b>"; } else { echo '<a class="btn btn-outline-dark someSpecific" href="editprofile.php">Add City <i class="material-icons-outlined">add</i></a>'; } ?> </div>
+                <div class="details"><img src="img/profiledetails/color/phone.png" width="35" height="auto"> &nbsp; <?php if($row["phone"] != "") { echo "Contact <b>" . $row["phone"] . "</b>"; } else { echo '<a class="btn btn-outline-dark someSpecific" href="editprofile.php">Add Phone <i class="material-icons-outlined">add</i></a>'; } ?> </div>
+                <div class="details"><img src="img/profiledetails/color/college.png" width="35" height="auto"> &nbsp; <?php if($row["college"] != "") { echo "Studies at <b>" . $row["college"] . "</b>"; } else { echo '<a class="btn btn-outline-dark someSpecific" href="editprofile.php">Add Education <i class="material-icons-outlined">add</i></a>'; } ?> </div>
+                <div class="details"><img src="img/profiledetails/color/bday.png" width="35" height="auto"> &nbsp; <?php if($row["bday"] != "") { echo "Wish on <b>" . $row["bday"] . "</b>"; } else { echo '<a class="btn btn-outline-dark someSpecific" href="editprofile.php">Add B\'day <i class="material-icons-outlined">add</i></a>'; } ?> </div>
+                <div class="details"><img src="img/profiledetails/color/joined.png" width="35" height="auto"> &nbsp; <?php if($row["created_at"] != "") { echo "Joined on <b>" . substr($row["created_at"],0,10) . "</b>"; } else { } ?> </div>
                 <div class="details"><img src="img/profiledetails/threeOpt/out/insta50.png" width="35" height="auto"> &nbsp; <?php if($row["instaprof"] != "") { echo "Instagram <b><a href='".$row["instaprof"]."'>" . $row["instaprof"] . "</a></b>"; } else { echo '<a class="btn btn-outline-dark someSpecific" href="editprofile.php">Add Instagram ID <i class="material-icons-outlined">add</i></a>'; } ?> </div>
                 
             </div>

@@ -98,7 +98,6 @@ $navLeft = '<b style="font-size: 22px;"><button type="button" class="btn" data-t
     <script>
         $(document).ready(function() {
             $("#navRadar").addClass("activehai");
-            $("#navRadar img").attr("src", "img/nav/aradar.svg");
         });
     </script>
 

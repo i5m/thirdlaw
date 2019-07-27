@@ -1,5 +1,18 @@
 </head>
 <style>
+    #onediv {
+        max-width: 100vw;
+        max-height: 100vh;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        background: #e6e6e6;
+    }
+    #oneMainDesign {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+    }
     #TTText {
         font-size: 9vw;
         color: #007bff;
@@ -33,12 +46,23 @@
             <img src="img/welcome/logominout.png" height="30" alt="">
         </a>
         <div align="right">
-            <a class="btn btn-outline-primary" href="login.php"><b>Log-in</b></a>
+            <a class="btn btn-outline-primary" href="login.php"><b>Log-in</b></a>&nbsp;
             <a class="btn btn-primary" href="register.php">Register</a>
         </div>
     </nav><br/>
 
-    <div class="container bg-light" align="center">
+    <div class="container-fluid bg-light" align="center">
+
+        <div id="oneDiv">
+            <div id="oneMainDesign">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 284.5 221.8" enable-background="new 0 0 284.5 221.8" xml:space="preserve">
+                    <g>
+                        <path fill="#ffffff" stroke="#007bff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M81.7,37.9l10.7-10.6v7.7h19.9V32l7.9-7.9v15.3c0,1.9-1.5,3.4-3.4,3.4H92.3v7.7L81.7,39.9C81.1,39.4,81.1,38.4,81.7,37.9z" />
+                        <path fill="#ffffff" stroke="#007bff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M82.4,16.8c0-1.9,1.5-3.4,3.4-3.4h24.4V5.6l10.7,10.6c0.6,0.6,0.6,1.5,0,2.1l-10.7,10.6v-7.7H90.3v2.9L82.4,32V16.8z" />
+                    </g>
+                </svg>
+            </div>
+        </div>
 
         <p id="TTText">Third Law</p>
         <h5 style="color: #cccccc">

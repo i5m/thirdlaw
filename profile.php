@@ -85,7 +85,6 @@ if ($link->query($sqlprofile) != TRUE) { echo "Error: " . $sqlprofile . "<br>" .
     <script>
         $(document).ready(function() {
             $("#navSearch").addClass("activehai");
-            $("#navSearch img").attr("src", "img/nav/asearch.svg");
         });
     </script>
 
@@ -209,7 +208,7 @@ if ($link->query($sqlprofile) != TRUE) { echo "Error: " . $sqlprofile . "<br>" .
 
                 <?php
                     if($row["instaprof"] !== "") {
-                        echo '<a class="btn" id="instaThreeOpt" href="'.$row["instaprof"].'">
+                        echo '<a class="btn" id="instaThreeOpt" href="https://instagram.com/'.$row["instaprof"].'">
                                 <div class="row">
                                     <div class="col colone">
                                         <img src="img/profiledetails/threeOpt/out/insta50.png"><br/>
@@ -225,11 +224,11 @@ if ($link->query($sqlprofile) != TRUE) { echo "Error: " . $sqlprofile . "<br>" .
 
             </div><br>
                
-            <?php if($row["city"] != "") { echo '<div class="details"><img src="img/profiledetails/ios/city.png" width="30" height="auto"> &nbsp;' . "Lives in <b>" . $row["city"] . "</b>" . '</div>'; } ?>
-            <?php if($row["phone"] != "") { echo '<div class="details"><img src="img/profiledetails/ios/phone.png" width="30" height="auto"> &nbsp;' . "Contact <b>" . $row["phone"] . "</b>" . '</div>'; } ?>
-            <?php if($row["college"] != "") { echo '<div class="details"><img src="img/profiledetails/ios/college.png" width="30" height="auto"> &nbsp;' . "Studies at <b>" . $row["college"] . "</b>" . '</div>'; } ?>
-            <?php if($row["bday"] != "") { echo '<div class="details"><img src="img/profiledetails/ios/bday.png" width="30" height="auto"> &nbsp;' . "Wish on <b>" . $row["bday"] . "</b>" . '</div>'; } ?>
-            <?php if($row["created_at"] != "") { echo '<div class="details"><img src="img/profiledetails/ios/joined.png" width="30" height="auto"> &nbsp;' . "Joined on <b>" . substr($row["created_at"],0,10) . "</b>" . '</div>'; } ?>
+            <?php if($row["city"] != "") { echo '<div class="details"><img src="img/profiledetails/color/city.png" width="35" height="auto"> &nbsp;' . "Lives in <b>" . $row["city"] . "</b>" . '</div>'; } ?>
+            <?php if($row["phone"] != "") { echo '<div class="details"><img src="img/profiledetails/color/phone.png" width="35" height="auto"> &nbsp;' . "Contact <b>" . $row["phone"] . "</b>" . '</div>'; } ?>
+            <?php if($row["college"] != "") { echo '<div class="details"><img src="img/profiledetails/color/college.png" width="35" height="auto"> &nbsp;' . "Studies at <b>" . $row["college"] . "</b>" . '</div>'; } ?>
+            <?php if($row["bday"] != "") { echo '<div class="details"><img src="img/profiledetails/color/bday.png" width="35" height="auto"> &nbsp;' . "Wish on <b>" . $row["bday"] . "</b>" . '</div>'; } ?>
+            <?php if($row["created_at"] != "") { echo '<div class="details"><img src="img/profiledetails/color/joined.png" width="35" height="auto"> &nbsp;' . "Joined on <b>" . substr($row["created_at"],0,10) . "</b>" . '</div>'; } ?>
             
         </div>
         <br><br><br>
