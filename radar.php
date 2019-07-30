@@ -1,7 +1,6 @@
 <?php
 require_once('header.php');
-session_start();
-if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) { $u = $_SESSION["username"]; }
+if (isset($_COOKIE["loggedin"])) { $u = $_COOKIE["username"]; }
 else { header("location: /"); exit; }
 
 $sqlUser = "SELECT username, latest_lat, latest_lng, ploc, last_active FROM users WHERE username='$u'";

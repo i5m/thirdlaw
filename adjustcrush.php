@@ -1,11 +1,10 @@
 <?php
-session_start();
-if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+if (isset($_COOKIE["loggedin"])) {
     header("location: login.php");
     exit;
 }
 else {
-    $u = $_SESSION["username"];
+    $u = $_COOKIE["username"];
     require_once('config.php');
     
     $myCrush = $_POST["myCrush"];

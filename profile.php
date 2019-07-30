@@ -1,14 +1,9 @@
 <?php
 if(isset($_GET['id'])) { $id = $_GET['id']; }
 else { header("location: q.php"); exit; }
-// Initialize the session
-session_start();
-// Check if the user is logged in, if not then redirect him to login page
-if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) { $u = ''; }
-else { $u = $_SESSION["username"]; }
-?>
+if (isset($_COOKIE["loggedin"])) { $u = $_COOKIE["username"]; }
+else { $u = ''; }
 
-<?php
 require_once('header.php');
 $sql = "SELECT * FROM users WHERE id='$id'";
 $result = $link->query($sql);
@@ -106,8 +101,7 @@ if ($link->query($sqlprofile) != TRUE) { echo "Error: " . $sqlprofile . "<br>" .
             </div><br>
 
             <?php
-            if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
-                $u = '';
+            if (!isset($_COOKIE["loggedin"])) {
                 echo '<a class="btn btn-outline-primary" href="login.php">
                         <i class="material-icons-outlined">favorite_border</i> &nbsp; Add Crush &nbsp; <i class="material-icons-outlined">add</i>
                         <span style="display: block; font-size: 10px;">Log in</span>

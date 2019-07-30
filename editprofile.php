@@ -1,13 +1,11 @@
 <?php
-// Initialize the session
-session_start();
-
-// Check if the user is logged in, if not then redirect him to login page
-if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+if (isset($_COOKIE["loggedin"])) {
+    $u = $_COOKIE["username"];
+}
+else {
     header("location: login.php");
     exit;
 }
-$u = $_SESSION["username"];
 ?>
 
 <?php
@@ -218,7 +216,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <b>Instagram username:</b>
                     <div class="input-group">
                         <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1"><i class="material-icons-outlined">alternate_email</i></span>
+                            <span class="input-group-text" id="basic-addon1"><i class="material-icons-outlined">add</i></span>
                         </div>
                         <input required type="text" maxlength="45" name="instaprof" class="form-control" value="<?php echo $row["instaprof"]; ?>" placeholder="Instagram Username" aria-label="Instagram Username" aria-describedby="basic-addon1">
                     </div>

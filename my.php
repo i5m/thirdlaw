@@ -1,16 +1,11 @@
 <?php
-// Initialize the session
-session_start();
-
-// Check if the user is logged in, if not then redirect him to login page
-if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+if (isset($_COOKIE["loggedin"])) {
+    $u = $_COOKIE["username"];
+} else {
     header("location: login.php");
     exit;
 }
-$u = $_SESSION["username"];
-?>
 
-<?php
 require_once('header.php');
 $sql = "SELECT * FROM users WHERE username='$u'";
 $result = $link->query($sql);

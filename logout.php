@@ -1,14 +1,9 @@
 <?php
-// Initialize the session
-session_start();
- 
-// Unset all of the session variables
-$_SESSION = array();
- 
-// Destroy the session.
-session_destroy();
- 
-// Redirect to login page
+
+setcookie("loggedin", "", time() - 3600);
+setcookie("id", "", time() - 3600);
+setcookie("username", "", time() - 3600);
+
 header("location: /");
 exit;
 ?>

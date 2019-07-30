@@ -1,7 +1,6 @@
 <?php
-session_start();
-if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) { header("location: /"); exit; }
-else { $u = $_SESSION["username"]; }
+if (isset($_COOKIE["loggedin"])) { $u = $_COOKIE["username"]; }
+else { header("location: /"); exit; }
 require_once('header.php');
 $navLeft = '<button class="btn" onclick="history.go(-1)"><i class="material-icons-outlined" style="font-weight: bold; vertical-align: top; color: #007bff;">arrow_back</i></button> <b style="font-size: 24px; vertical-align: middle;">Custom</b>';
 ?>

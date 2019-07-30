@@ -1,9 +1,6 @@
 <?php
-// Initialize the session
-session_start();
-// Check if the user is logged in, if not then redirect him to login page
-if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) { $u = ''; }
-else { $u = $_SESSION["username"]; }
+if (isset($_COOKIE["loggedin"])) { $u = $_COOKIE["username"]; }
+else { $u = ''; }
 if (!empty($_GET)) { $q = $_GET['q']; }
 require_once('header.php');
 $navLeft = '<b style="font-size: 24px; vertical-align: middle;">Search</b>';
@@ -56,8 +53,8 @@ $navLeft = '<b style="font-size: 24px; vertical-align: middle;">Search</b>';
 
     <?php
     function plzSuggest() {
-        if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
-            $u = $_SESSION["username"];
+        if (isset($_COOKIE["loggedin"])) {
+            $u = $_COOKIE["username"];
             $link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
             echo "<br><h4 style='color: gray'>Recent Searches: </h4>";
             $sqlSuggestSearch = "SELECT whosearch, searchfreq FROM searches WHERE username='" . $u . "' ORDER BY searched_at DESC";

@@ -1,8 +1,7 @@
 <?php
 require_once('config.php');
-session_start();
-if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) { $u = ''; }
-else { $u = $_SESSION["username"]; }
+if (isset($_COOKIE["loggedin"])) { $u = $_COOKIE["username"]; }
+else { $u = ''; }
 
 if($_REQUEST["action"] == "getuser") {
     $q = $_REQUEST["q"];

@@ -1,10 +1,11 @@
 <?php
-session_start();
-if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+if (isset($_COOKIE["loggedin"])) {
+    $u = $_COOKIE["username"];
+}
+else {
     header("location: login.php");
     exit;
 }
-$u = $_SESSION["username"];
 $theIp = $_SERVER['REMOTE_ADDR'];
 $usingGeo = 0;
 
