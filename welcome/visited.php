@@ -10,8 +10,9 @@
     #visitedProfile, #suggestion { min-width: 250px; }
 </style>
 <div align="left">
-    <img src="img/welcome/visitedProfile.png" height="30px">
-    &nbsp; <b class="welcomeTopics">Visited Profile</b>
+    <b class="welcomeTopics">
+        <i class="material-icons-outlined">history</i> &nbsp; Visited Profile
+    </b>
 </div><br/>
 <?php
 $sqlVisited = "SELECT id, fullname, ploc FROM users WHERE username IN (SELECT whoprofile FROM profiles WHERE username='" . $u . "' ORDER BY stalked_at DESC) LIMIT 4";

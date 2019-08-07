@@ -94,8 +94,8 @@ SELECT SQL_CALC_FOUND_ROWS
         $sqlTo = "SELECT DISTINCT users.id, users.fullname, users.username, users.ploc
                 FROM users
                 INNER JOIN message ON ((users.username = message.fromuser) OR (users.username = message.touser))
-                WHERE NOT users.username = '$u' AND  (message.fromuser = '$u' OR message.touser = '$u')
-                ORDER BY id ASC";
+                WHERE NOT users.username = '$u' AND (message.fromuser = '$u' OR message.touser = '$u')
+                ORDER BY id DESC";
         $resultTo = $link->query($sqlTo);
         $navLeft = '<img src="img/welcome/continueMessage.png" height="28px"> &nbsp; <b style="font-size: 30px; vertical-align: middle;">Chats</b>';
 ?>

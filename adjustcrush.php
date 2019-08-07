@@ -1,5 +1,5 @@
 <?php
-if (isset($_COOKIE["loggedin"])) {
+if (!isset($_COOKIE["loggedin"])) {
     header("location: login.php");
     exit;
 }

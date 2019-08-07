@@ -1,10 +1,9 @@
 <?php
-session_start();
-if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+if (!isset($_COOKIE["loggedin"])) {
     header("location: /");
     exit;
 } else {
-    $u = $_SESSION["username"];
+    $u = $_COOKIE["username"];
 }
 require_once('../header.php');
 if (!empty($_GET)) {
@@ -78,7 +77,7 @@ if($lastOnline == $timeNow) { $showOnline = '<svg width="14" height="14"><circle
     }
     #show .myMsg, #show .thierMsg {
         margin: 7px;
-        padding: 7px;
+        padding: 10px;
         padding-right: 25px;
         word-wrap: break-word;
         max-width: 300px;
@@ -106,15 +105,15 @@ if($lastOnline == $timeNow) { $showOnline = '<svg width="14" height="14"><circle
         window.history.replaceState(null, null, window.location.href);
     }
 </script>
-<span id="forOnline"></span>
 <script>
     $(document).ready(function() {
-        $("#forOnline").load("../onlinestatus.php");
-
-        function blink() {
-            $("#forOnline").load("../onlinestatus.php");
+        sO();
+        setInterval(function() {
+            sO();
+        }, 200000);
+        function sO() {
+            $.post("../onlinestatus.php?action=stayOnline", function(responce) { });
         }
-        setInterval(blink, 200000);
     });
 </script>
 </head>
@@ -168,7 +167,7 @@ if($lastOnline == $timeNow) { $showOnline = '<svg width="14" height="14"><circle
 
         <div id="messageBox" class="bg-light">
             <form method="POST" id="messageBoxForm">
-                <div>
+                <div class="input-group mb-3">
                     <input autocomplete="off" required type="text" class="form-control" aria-label="Start typing..." placeholder="Start typing..." name="theMessage" id="theMessage">
                     <div class="input-group-append">
                         <button class="btn theBtn" id="send"><i class="material-icons-outlined">send</i></button>

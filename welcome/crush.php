@@ -24,8 +24,9 @@
     @media only screen and (max-width: 600px) { .crushBtn { display: block; } }
 </style>
 <div>
-    <img src="img/welcome/logominout.png" height="30px"> &nbsp;
-    <b class="welcomeTopics">Your crushes</b> <br/> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    <b class="welcomeTopics">
+        <i class="material-icons-outlined">favorite_border</i> &nbsp; Your crushes
+    </b> <br/> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
     <button type="button" class="btn btn-outline-primary" id="crushKnowBtn" data-toggle="modal" data-target="#knowmore">
         <i class="material-icons-outlined">info</i> <b> Know More</b>
     </button>

@@ -1,7 +1,6 @@
 <?php
-    session_start();
-    if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) { header("location: ../login.php"); exit; }
-    else { $u = $_SESSION["username"]; }
+    if (!isset($_COOKIE["loggedin"])) { header("location: ../login.php"); exit; }
+    else { $u = $_COOKIE["username"]; }
     require_once("../config.php");
     $fromUser = $u;
     $toUser = $_REQUEST["touser"];
@@ -42,21 +41,18 @@
                     echo '<div style="text-align: right; position: relative;">
                             <div class="btn alert-light text-'.$colorMsg.' border-'.$colorMsg.' myMsg">'
                                 .$rowMsgDisp["messagebody"].'
-                                <div class="sentat" style="font-size: 10px; color: gray;">'.substr($rowMsgDisp["sent_at"],11,5).'</div>
-                            </div>
-                        <br></div>';
-                    /*$sqlHasSeen = "UPDATE message SET hasseen=1, seen_at='".date("Y/m/d h:i:sa")."' WHERE fromuser='".$u."' AND touser='$toUser' AND hasseen=0 AND messagebody='".$rowMsgDisp["messagebody"]."'";
-                    if ($link->query($sqlHasSeen) === TRUE) { echo '<div style="padding-right: 10px; color: #007bff;" align="right"><b>Seen</b></div>'; }
-                    else { echo "Error updating record: " . $link->error; }*/
-                        
+                            </div><br/>
+                        </div>';
                 }
                 else {
                     echo '<div style="text-align: left; position: relative;">
                             <div class="btn alert-light text-'.$colorMsg.' border-'.$colorMsg.' thierMsg">'
                                 .$rowMsgDisp["messagebody"].'
-                                <div class="sentat text-right" style="font-size: 10px; color: gray;">'.substr($rowMsgDisp["sent_at"],11,5).'</div>
                             </div>
                         <br></div>';
+                        $sqlHasSeen = "UPDATE message SET hasseen=1, seen_at='".date("Y/m/d h:i:sa")."' WHERE id=".$rowMsgDisp["id"];
+                        if ($link->query($sqlHasSeen) === TRUE) { echo '<div style="padding-right: 10px; color: #007bff;"><b>Seen</b></div>'; }
+                        else { echo "Error updating record: " . $link->error; }
                 }
             }
 

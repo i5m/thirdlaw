@@ -1,6 +1,7 @@
 <div>
-    <img src="img/welcome/radar.png" height="30px">
-    &nbsp; <b class="welcomeTopics">Radar</b>
+    <b class="welcomeTopics">
+        <i class="material-icons-outlined">near_me</i> &nbsp; Radar
+    </b>
 </div><br/>
 <div align="center" style="min-width: 280px;">
     <h5>

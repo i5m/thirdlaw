@@ -4,8 +4,9 @@
     #howBarDiv .howBarBar { width: 30px; }
 </style>
 <div>
-    <img src="img/welcome/howreact.png" height="30px"> &nbsp;
-    <b class="welcomeTopics">Reactions</b> <br/> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    <b class="welcomeTopics">
+        <i class="material-icons-outlined">thumbs_up_down</i> &nbsp; Reactions
+    </b> <br/> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
     <button type="button" class="btn btn-outline-primary" id="reactKnowBtn" data-toggle="modal" data-target="#knowmore">
         <i class="material-icons-outlined">info</i> <b> What's this?</b>
     </button>

@@ -85,9 +85,8 @@ $navLeft = '<b style="font-size: 22px;">'.$u.'</b>';
                 
             </div>
             <div id="settings" class="col"><br>
-                <div class="card" align="center">
-                    <h3 align="left"><i class="material-icons-outlined">layers</i> <b>Stats</b></h3>
-                    <div class="dropdown-divider"></div>
+                <div class="card">
+                    <h3><i class="material-icons-outlined">layers</i> <b>Stats</b></h3><br/>
                     <?php
                         $sqlCountVisit = "SELECT COUNT(whoprofile) FROM profiles WHERE whoprofile='$u'";
                         $resultCountVisit = $link->query($sqlCountVisit);
@@ -99,23 +98,19 @@ $navLeft = '<b style="font-size: 22px;">'.$u.'</b>';
                         $resultCountMyCrush = $link->query($sqlCountMyCrush);
                         $rowCountMyCrush = mysqli_fetch_array($resultCountMyCrush);
                     ?>
-                    <div class="card">
-                        <h6> <b> <?php echo $rowCountVisit["COUNT(whoprofile)"]; ?> </b> people has visited your profile.</h6>
-                    </div>
-                    <div class="card">
-                        <h6>You have crush on <b> <?php echo $rowCountMyCrush["COUNT(crush)"]; ?> </b> people.</h6>
-                    </div>
-                    <div class="card">
-                        <h6> <b> <?php echo $rowCountOnMeCrush["COUNT(user)"]; ?> </b> people have crush on you</h6>
-                    </div>
+                    <ul class="list-group">
+                        <li class="list-group-item"><h6><img src="img/profiledetails/stat/recent.png" class="float-left mr-2" width="32px"> <b><?php echo $rowCountVisit["COUNT(whoprofile)"]; ?></b> people has visited your profile.</h6></li>
+                        <li class="list-group-item"><h6><img src="img/profiledetails/stat/mine.png" class="float-left mr-2" width="32px"> You have crush on<b> <?php echo $rowCountMyCrush["COUNT(crush)"]; ?></b> people.</h6></li>
+                        <li class="list-group-item"><h6><img src="img/profiledetails/stat/onMe.png" class="float-left mr-2" width="32px"> <b> <?php echo $rowCountOnMeCrush["COUNT(user)"]; ?> </b>people have crush on you</h6></li>
+                    </ul>
                 </div><br>
                 <div class="card">
                     <h3><i class="material-icons-outlined">settings</i> <b>Settings</b></h3>
                     <div class="dropdown-divider"></div>
-                    <a class="settingsBtn" href="editprofile.php"><b><i class="material-icons-outlined" style="border: 2px solid green; color: green;">edit</i> Edit Profile</b></a>
-                    <a class="settingsBtn" href="reset-password.php"><b><i class="material-icons-outlined" style="border: 2px solid orange; color: orange;">fiber_pin</i> Reset Password</b></a>
-                    <a class="settingsBtn" href="logout.php"><b><i class="material-icons-outlined" style="border: 2px solid red; color: red;">power_settings_new</i> Logout</b></a>
-                    <a class="settingsBtn" href="dev.php"><b><i class="material-icons-outlined" style="border: 2px solid #333; color: #333;">code</i> DevOps</b></a>
+                    <a class="settingsBtn" href="editprofile.php"><b><i class="material-icons-outlined border p-1 mr-1">edit</i> Edit Profile</b></a>
+                    <a class="settingsBtn" href="reset-password.php"><b><i class="material-icons-outlined border p-1 mr-1">fiber_pin</i> Reset Password</b></a>
+                    <a class="settingsBtn" href="logout.php"><b><i class="material-icons-outlined border p-1 mr-1">power_settings_new</i> Logout</b></a>
+                    <a class="settingsBtn" href="dev.php"><b><i class="material-icons-outlined border p-1 mr-1">code</i> DevOps</b></a>
                 </div><br><br><br>
             </div>
         </div><br><br><br>
